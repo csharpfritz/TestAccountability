@@ -4,7 +4,7 @@
 /// Decorate your test methods with this attribute to indicate that the test is verifying a specific issue.
 /// </summary>
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-public class IssueAttribute : Attribute
+public class IssueAttribute : AccountabilityAttribute
 {
 
 	/// <summary>
