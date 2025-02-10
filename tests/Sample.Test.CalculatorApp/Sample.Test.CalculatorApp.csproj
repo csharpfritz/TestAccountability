@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\TestAccountability.Analyzers\TestAccountability.BuildTasks.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\..\src\TestAccountability\TestAccountability.csproj" />
     <ProjectReference Include="..\Sample.CalculatorApp\Sample.CalculatorApp.csproj" />
   </ItemGroup>
@@ -21,5 +22,11 @@
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
+
+  <UsingTask TaskName="TestAccountability.BuildTasks.ReportGenerationTask" AssemblyFile="$(SolutionDir)src\TestAccountability.BuildTasks\bin\$(Configuration)\net9.0\TestAccountability.BuildTasks.dll" />
+
+  <Target Name="GenerateJsonReport" AfterTargets="Build">
+    <ReportGenerationTask AssemblyPath="$(TargetPath)" OutputPath="$(OutputPath)\FeatureReport.json" />
+  </Target>
 
 </Project>
