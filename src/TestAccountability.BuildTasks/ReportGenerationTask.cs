@@ -1,6 +1,5 @@
 ﻿using Microsoft.Build.Framework;
 using System.Reflection;
-using System.Runtime.Loader;
 using System.Text.Json;
 using BUILD = Microsoft.Build.Utilities;
 
@@ -17,14 +16,14 @@ namespace TestAccountability.BuildTasks
 		public override bool Execute()
 		{
 
-			AssemblyLoadContext loadContext = null!;
+			//AssemblyLoadContext loadContext = null!;
 
 			try
 			{
 				Log.LogMessage($"Generating report for {AssemblyPath} to {OutputPath}");
 
-				loadContext = new AssemblyLoadContext("ReportGenerationTask", true);
-				var assembly = loadContext.LoadFromAssemblyPath(AssemblyPath);
+				//loadContext = new AssemblyLoadContext("ReportGenerationTask", true);
+				var assembly = Assembly.LoadFile(AssemblyPath);
 				var methodDetails = new List<MethodDetail>();
 
 				foreach (var type in assembly.GetTypes())
@@ -46,9 +45,6 @@ namespace TestAccountability.BuildTasks
 				var json = JsonSerializer.Serialize(methodDetails);
 				File.WriteAllText(OutputPath, json);
 
-				// Unload the assembly
-				//loadContext.
-
 				return true;
 			}
 			catch (Exception ex)
@@ -68,10 +64,10 @@ namespace TestAccountability.BuildTasks
 			}
 			finally
 			{
-				if (loadContext != null)
-				{
-					loadContext.Unload();
-				}
+				//if (loadContext != null)
+				//{
+				//	loadContext.Unload();
+				//}
 
 			}
 		}

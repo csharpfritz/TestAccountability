@@ -15,6 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Test.CalculatorApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAccountability.BuildTasks", "src\TestAccountability.BuildTasks\TestAccountability.BuildTasks.csproj", "{AB49199B-D1A3-AA16-3864-0C9E15AC2F18}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAccountability.Console", "TestAccountability.Console\TestAccountability.Console.csproj", "{48862825-A491-4F6D-AE9D-20C0EEBD0581}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +80,18 @@ Global
 		{AB49199B-D1A3-AA16-3864-0C9E15AC2F18}.Release|x64.Build.0 = Release|Any CPU
 		{AB49199B-D1A3-AA16-3864-0C9E15AC2F18}.Release|x86.ActiveCfg = Release|Any CPU
 		{AB49199B-D1A3-AA16-3864-0C9E15AC2F18}.Release|x86.Build.0 = Release|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Debug|x64.Build.0 = Debug|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Debug|x86.Build.0 = Debug|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Release|x64.ActiveCfg = Release|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Release|x64.Build.0 = Release|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Release|x86.ActiveCfg = Release|Any CPU
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +101,7 @@ Global
 		{D7FABBF0-D081-4D12-8886-06F1285C5E7E} = {0B2F9697-5496-4C50-B579-541B692A29A3}
 		{DC01C633-0A4B-4D47-BEE0-24D19F41F43E} = {0B2F9697-5496-4C50-B579-541B692A29A3}
 		{AB49199B-D1A3-AA16-3864-0C9E15AC2F18} = {4EA96AB8-E5E4-4E95-BBBC-0F4207851585}
+		{48862825-A491-4F6D-AE9D-20C0EEBD0581} = {4EA96AB8-E5E4-4E95-BBBC-0F4207851585}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0FFB1134-097C-407F-99DF-BB3CCC44DE8F}

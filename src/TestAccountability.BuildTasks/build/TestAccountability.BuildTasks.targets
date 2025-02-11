@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!--Defining all the text files input parameters-->
+	<Target Name="GenerateJsonReport" AfterTargets="Build">
+		<ReportGenerationTask AssemblyPath="$(TargetPath)" 
+			OutputPath="$(OutputPath)\FeatureReport.json" />
+	</Target>
+
+</Project>
