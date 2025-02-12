@@ -47,18 +47,22 @@ namespace TestAccountability.BuildTasks
 
 				return true;
 			}
-			catch (Exception ex)
+			catch(ReflectionTypeLoadException ex)
 			{
 				Log.LogError($"Error of type {ex.GetType()} occurred while generating report");
 				Log.LogErrorFromException(ex);
 
-				if (ex is ReflectionTypeLoadException reflectionTypeLoadException)
+				foreach (var loaderException in ex.LoaderExceptions)
 				{
-					foreach (var loaderException in reflectionTypeLoadException.LoaderExceptions)
-					{
-						Log.LogError(loaderException.Message);
-					}
+					Log.LogError(loaderException.Message);
 				}
+
+				return false;
+			}
+			catch (Exception ex)
+			{
+				Log.LogError($"Error of type {ex.GetType()} occurred while generating report");
+				Log.LogErrorFromException(ex);
 
 				return false;
 			}
@@ -68,7 +72,6 @@ namespace TestAccountability.BuildTasks
 				//{
 				//	loadContext.Unload();
 				//}
-
 			}
 		}
 	}

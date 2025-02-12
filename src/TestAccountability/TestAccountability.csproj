@@ -9,8 +9,4 @@
     <PackageVersion>1.0.2</PackageVersion>
   </PropertyGroup>
 
-  <Target Name="PrintSolutionDir" AfterTargets="Build">
-    <Message Text="SolutionDir: $(SolutionDir)" Importance="high" />
-  </Target>
-
 </Project>
