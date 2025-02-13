@@ -1,16 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-    <PackageOutputPath>..\..\Packages</PackageOutputPath>
-    <PackageVersion>1.0.2</PackageVersion>
-  </PropertyGroup>
-
-  <Target Name="PrintSolutionDir" AfterTargets="Build">
-    <Message Text="SolutionDir: $(SolutionDir)" Importance="high" />
-  </Target>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
 
 </Project>

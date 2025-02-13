@@ -7,7 +7,7 @@ public class VerifySum
 {
 
 	[Fact]
-	[Feature("123", FeatureTracker = KnownFeatureTracker.GitHubIssues)]
+	[Feature("123", FeatureTracker =  KnownFeatureTracker.GitHubIssues)]
 	public void AddsTwoNumbers()
 	{
 
