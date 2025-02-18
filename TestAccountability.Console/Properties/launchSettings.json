@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "TestAccountability.Console": {
-      "commandName": "Project",
-      "commandLineArgs": "D:\\TestAccountability\\tests\\Sample.Test.CalculatorApp\\bin\\Debug\\net9.0\\Sample.Test.CalculatorApp.dll"
-    }
-  }
-}

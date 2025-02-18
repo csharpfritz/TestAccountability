@@ -2,9 +2,12 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
 	<!--Defining all the text files input parameters-->
-	<Target Name="GenerateJsonReport" AfterTargets="Build">
-		<ReportGenerationTask AssemblyPath="$(TargetPath)" 
-			OutputPath="$(OutputPath)\FeatureReport.json" />
+	<Target Name="GenerateJsonReport" 
+			AfterTargets="AfterBuild">
+			
+		<!--Calling our task -->
+		<ReportGenerationTask AssemblyPath="$(TargetPath)"
+							  OutputPath="$(MSBuildProjectDirectory)\FeatureReport.json" />
 	</Target>
 
 </Project>

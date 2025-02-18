@@ -9,25 +9,17 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-		<!--<PackageReference Include="TestAccountability.BuildTasks" Version="0.1.3" />-->
 		<PackageReference Include="xunit" Version="2.9.2" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+		<PackageReference Include="TestAccountability.BuildTasks" Version="3.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\TestAccountability\TestAccountability.csproj" />
-		<ProjectReference Include="..\Sample.CalculatorApp\Sample.CalculatorApp.csproj" />
+	  <ProjectReference Include="..\Sample.CalculatorApp\Sample.CalculatorApp.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Using Include="Xunit" />
 	</ItemGroup>
-
-	<UsingTask TaskName="TestAccountability.BuildTasks.ReportGenerationTask" AssemblyFile="..\..\dist\TestAccountability.BuildTasks.dll" />
-
-	<Target Name="GenerateJsonReport" AfterTargets="Build">
-		<ReportGenerationTask AssemblyPath="$(TargetPath)"
-			OutputPath="$(OutputPath)\FeatureReport.json" />
-	</Target>
 
 </Project>

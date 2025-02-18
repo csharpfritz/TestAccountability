@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
-		<Version>0.1.3</Version>
-		<!--<IncludeBuildOutput>false</IncludeBuildOutput>-->
+		<TargetFramework>netstandard2.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
@@ -12,21 +10,38 @@
 		<description>Generates a report of Features and Issues that tests reference</description>
 		<tags>unit testing</tags>
 		<copyright>Copyright ©Fritz and Friends 2025</copyright>
+		
 		<!-- we need the assemblies bundled, so set this so we don't expose any dependencies to the outside world -->
 		<GenerateDependencyFile>true</GenerateDependencyFile>
 		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+		
 		<!-- This property tells MSBuild where the root folder of the package's build assets should be. Because we are not a library package, we should not pack to 'lib'. Instead, we choose 'tasks' by convention. -->
 		<BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+		
 		<!-- NuGet does validation that libraries in a package are exposed as dependencies, but we _explicitly_ do not want that behavior for MSBuild tasks. They are isolated by design. Therefore we ignore this specific warning. -->
 		<NoWarn>NU5100</NoWarn>
 		<DebugType>embedded</DebugType>
+		
+		<!-- Package information-->
 		<IsPackable>true</IsPackable>
+		<PackageOutputPath>..\..\packages</PackageOutputPath>
+		<PackageVersion>3.0.2</PackageVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.8.0" PrivateAssets="all" ExcludeAssets="Runtime" />
 		<PackageReference Include="Microsoft.Build.Framework" Version="16.8.0" PrivateAssets="all" />
 		<PackageReference Include="System.Text.Json" Version="9.0.1" PrivateAssets="all" />
+	</ItemGroup>
+
+	<!-- This property tells MSBuild to copy the transitive dependencies of the project to the output directory. This is necessary because the MSBuild task will need to load these assemblies at runtime. -->
+	<PropertyGroup>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<!-- This item group tells MSBuild to include the transitive dependencies of the project in the output directory. This is necessary because the MSBuild task will need to load these assemblies at runtime. -->
+	<ItemGroup>
+		<None Include="$(OutputPath)System.Text.Json.dll" Pack="true" PackagePath="buildTransitive/" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -39,6 +54,14 @@
          for automatic inclusion in the build. -->
 		<Content Include="build\TestAccountability.BuildTasks.props" PackagePath="build\" />
 		<Content Include="build\TestAccountability.BuildTasks.targets" PackagePath="build\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Include the class library in the lib folder of the NuGet package -->
+		<Content Include="..\TestAccountability\bin\$(Configuration)\netstandard2.0\TestAccountability.dll" PackagePath="lib\netstandard2.0\" />
+		<!-- Include System.Text.Json in the tasks folder of the NuGet package -->
+		<Content Include="$(NuGetPackageRoot)system.text.json\9.0.1\lib\netstandard2.0\System.Text.Json.dll" PackagePath="lib\netstandard2.0\" />
+
 	</ItemGroup>
 
 	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
