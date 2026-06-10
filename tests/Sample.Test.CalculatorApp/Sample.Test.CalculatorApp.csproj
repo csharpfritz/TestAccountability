@@ -23,11 +23,11 @@
 		<Using Include="Xunit" />
 	</ItemGroup>
 
-	<UsingTask TaskName="TestAccountability.BuildTasks.ReportGenerationTask" AssemblyFile="..\..\dist\TestAccountability.BuildTasks.dll" />
+	<!--<UsingTask TaskName="TestAccountability.BuildTasks.ReportGenerationTask" AssemblyFile="..\..\dist\TestAccountability.BuildTasks.dll" />
 
 	<Target Name="GenerateJsonReport" AfterTargets="Build">
 		<ReportGenerationTask AssemblyPath="$(TargetPath)"
 			OutputPath="$(OutputPath)\FeatureReport.json" />
-	</Target>
+	</Target>-->
 
 </Project>

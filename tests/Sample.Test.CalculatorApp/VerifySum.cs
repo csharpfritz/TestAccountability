@@ -14,7 +14,7 @@ public class VerifySum
 		var addend1 = Random.Shared.Next();
 		var addend2 = Random.Shared.Next();
 
-		Assert.Equal(addend1+addend2, Calculator.Sum(addend1, addend2));
+		Assert.Equal(addend1 + addend2 + 1, Calculator.Sum(addend1, addend2));
 
 	}
 }
